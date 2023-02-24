@@ -1,5 +1,6 @@
 #include "FileCopy.h"
 #include <QFileDialog>
+#include <QMessageBox>
 #include <Windows.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +18,7 @@ FileCopy::FileCopy(QWidget *parent): QMainWindow(parent)
 void FileCopy::chooseShareFile() {
 	QString filePath = QFileDialog::getOpenFileName(this,QString::fromLocal8Bit("选择共享盘文件"),QString(getenv("HOMEDRIVE"))+QString("\\"),QString::fromLocal8Bit("所有文件(*.*)"));
 	if (filePath.isEmpty()) {
-		MessageBox(NULL, L"你没有选择文件！", L"提示", MB_OK);
+		QMessageBox::information(this, QString::fromLocal8Bit("提示"),QString::fromLocal8Bit("你没有选择文件！"));
 	}
 	else {
 		ui.lineEdit->setText(filePath);
@@ -34,7 +35,7 @@ void FileCopy::chooseLocalFile() {
 	}
 	QString filePath = QFileDialog::getSaveFileName(this, QString::fromLocal8Bit("保存到文件"), fileName, QString::fromLocal8Bit("所有文件(*.*)"));
 	if (filePath.isEmpty()) {
-		MessageBox(NULL, L"你没有选择文件！", L"提示", MB_OK);
+		QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("你没有选择文件！"));
 	}
 	else {
 		ui.lineEdit_2->setText(filePath);
@@ -55,7 +56,7 @@ void FileCopy::copyFile() {
 	fclose(destfile);
 	ui.lineEdit->setText(QString());
 	ui.lineEdit_2->setText(QString());
-	MessageBox(NULL, L"复制成功！", L"提示", MB_OK);
+	QMessageBox::information(this, QString::fromLocal8Bit("提示"), QString::fromLocal8Bit("文件复制成功！"));
 }
 
 FileCopy::~FileCopy(){}

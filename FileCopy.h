@@ -13,4 +13,9 @@ public:
 
 private:
     Ui::FileCopyClass ui;
+
+private slots:
+	void chooseShareFile();
+	void chooseLocalFile();
+	void copyFile();
 };

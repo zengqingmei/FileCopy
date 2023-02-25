@@ -7,7 +7,7 @@
 
 FileCopy::FileCopy(QWidget *parent): QMainWindow(parent)
 {
-    ui.setupUi(this);
+	ui.setupUi(this);
 	setFixedSize(this->width(), this->height());
 	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(chooseShareFile()));
 	connect(ui.pushButton_2, SIGNAL(clicked()), this, SLOT(chooseLocalFile()));
